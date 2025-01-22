@@ -19,6 +19,8 @@ function ListaUsuarios() {
 
     // useEffect con alguna dependencia, este se ejecuta cuando cambia el valor de esa dependencia
 
+
+    // efecto para traer los datos de la api
     useEffect(()=>{
         if(cargar == true){
 
@@ -32,6 +34,7 @@ function ListaUsuarios() {
 
     },[cargar])
 
+    // efecto para cambiar el texto del botón
     useEffect(()=>{
         if(cargar == true){
             setTextoBoton("Limpiar datos")
@@ -41,8 +44,9 @@ function ListaUsuarios() {
     },[cargar])
 
   
+    // función para cambiar el estado de cargar
     const handleCargar = () => {
-        cargar == false ? setCargar(true) : setCargar(false)
+        cargar == false ? setCargar(true) : setCargar(false) // operador ternario --> simplificación de un if
     }
 
   return (
