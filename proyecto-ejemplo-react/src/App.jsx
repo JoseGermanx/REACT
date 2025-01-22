@@ -1,12 +1,12 @@
 
 import './App.css'
-import Formulario from './components/Formulario'
+import ListaUsuarios from './ListaUsuarios'
 
 function App() {
 
   return (
     <>
-     <Formulario />
+     <ListaUsuarios />
     </>
   )
 }
