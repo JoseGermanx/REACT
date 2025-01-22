@@ -10,8 +10,14 @@ function ListaUsuarios() {
 
     const [usuarios, setUsuarios] = useState([])
     const [cargar, setCargar] = useState(false)
+    const [textoBoton, setTextoBoton] = useState("Cargar datos")
 
     // useEffect para ejecutar código después de que el componente se renderiza
+      // useEffect indicando dependencias vacias [] - se ejecuta una sola vez cuando se carga el componente
+
+    // useEffect sin dependencias - se ejecuta cada vez que se renderiza el componente
+
+    // useEffect con alguna dependencia, este se ejecuta cuando cambia el valor de esa dependencia
 
     useEffect(()=>{
         if(cargar == true){
@@ -19,25 +25,30 @@ function ListaUsuarios() {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(data => setUsuarios(data))
+        } else {
+            setUsuarios([])
         }
         console.log("ejecutando useEffect")
 
     },[cargar])
 
-    // useEffect indicando dependencias vacias [] - se ejecuta una sola vez cuando se carga el componente
+    useEffect(()=>{
+        if(cargar == true){
+            setTextoBoton("Limpiar datos")
+        } else {
+            setTextoBoton("Cargar datos")
+        }
+    },[cargar])
 
-    // useEffect sin dependencias - se ejecuta cada vez que se renderiza el componente
-
-    // useEffect con alguna dependencia, este se ejecuta cuando cambia el valor de esa dependencia
-
+  
     const handleCargar = () => {
-        setCargar(true)
+        cargar == false ? setCargar(true) : setCargar(false)
     }
 
   return (
     <div>
         <h1>Lista usuarios</h1>
-        <button onClick={handleCargar}>Cargar datos</button>
+        <button onClick={handleCargar}>{textoBoton}</button>
         <ul>
        {usuarios.map((usuario) => (
          <li key={usuario.id}>{usuario.username}</li>
