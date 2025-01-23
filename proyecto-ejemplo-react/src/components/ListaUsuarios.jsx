@@ -49,6 +49,7 @@ function ListaUsuarios() {
         cargar == false ? setCargar(true) : setCargar(false) // operador ternario --> simplificación de un if
     }
 
+
   return (
     <div>
         <h1>Lista usuarios</h1>

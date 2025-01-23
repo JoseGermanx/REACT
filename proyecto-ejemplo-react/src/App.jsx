@@ -1,6 +1,6 @@
 
 import './App.css'
-import ListaUsuarios from './ListaUsuarios'
+import ListaUsuarios from './components/ListaUsuarios'
 
 function App() {
 
