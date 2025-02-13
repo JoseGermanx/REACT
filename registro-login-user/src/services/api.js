@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://local0host:808", // Cambia según tu servidor
+  baseURL: "http://localhost:8080", // Cambia según tu servidor
 });
 
 // Interceptor para añadir el token a las solicitudes protegidas
