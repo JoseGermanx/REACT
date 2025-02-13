@@ -1,11 +1,15 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import api from "../services/api";
 
 
 const Login = () => {
   const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +20,14 @@ const Login = () => {
       alert("Error al iniciar sesión");
     }
   };
+
+  useEffect(() => {
+    api.get("/user-data")
+      .then((response) => {
+        console.log("response user data: ", response.data.data)
+        if (response.status === 200) navigate("/profile")
+      })
+  }, []);
 
   return (
     <div className="container mt-5 w-50">

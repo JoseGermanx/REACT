@@ -10,26 +10,27 @@ export const AuthProvider = ({ children }) => {
 
   // Cargar usuario desde localStorage
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      api.get("/user-data")
-        .then((response) => setUser(response.data.user))
-        .catch(() => logout());
-    }
+    api.get("/user-data")
+      .then((response) => {
+        console.log("response user data: ", response.data.data)
+        if (response.status === 200) setUser(response.data.data)
+      })
   }, []);
+  
 
   const login = async (email, password) => {
-    const response = await api.post("/login", { email, password });
-    const { token } = response.data.data;
-    console.log(response)
-    localStorage.setItem("token", token);
+    try {
+      await api.post("/login", { email, password });
+    } catch (error) {
+      alert("Hubo un error")
+    }
     const profile = await api.get("/user-data");
-    setUser(profile.data);
+    setUser(profile.data.data);
     navigate("/profile");
   };
-
-  const logout = () => {
-    localStorage.removeItem("token");
+  
+  const logout = async () => {
+    await api.get("/logout");
     setUser(null);
     navigate("/login");
   };
