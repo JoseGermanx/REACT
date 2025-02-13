@@ -21,14 +21,7 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    api.get("/user-data")
-      .then((response) => {
-        console.log("response user data: ", response.data.data)
-        if (response.status === 200) navigate("/profile")
-      })
-  }, []);
-
+    
   return (
     <div className="container mt-5 w-50">
        <h1>Login</h1>
