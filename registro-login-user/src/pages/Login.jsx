@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -17,13 +18,17 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container mt-5 w-50">
+       <h1>Login</h1>
+    <form onSubmit={handleSubmit} className="d-flex flex-column">
       <input type="email" placeholder="Correo" value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })} required className="mb-3"/>
       <input type="password" placeholder="Contraseña" value={formData.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })} required />
-      <button type="submit">Iniciar sesión</button>
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })} required className="mb-3"/>
+      <button type="submit" className="w-50">Iniciar sesión</button>
     </form>
+    <Link to={"/register"}>Ir a registro</Link>
+    </div>
   );
 };
 
