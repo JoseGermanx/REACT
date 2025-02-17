@@ -19,15 +19,15 @@ const Login = () => {
 
   return (
     <div className="container mt-5 w-50">
-       <h1>Login</h1>
-    <form onSubmit={handleSubmit} className="d-flex flex-column">
-      <input type="email" placeholder="Correo" value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })} required className="mb-3"/>
-      <input type="password" placeholder="Contraseña" value={formData.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })} required className="mb-3"/>
-      <button type="submit" className="w-50">Iniciar sesión</button>
-    </form>
-    <Link to={"/register"}>Ir a registro</Link>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit} className="d-flex flex-column">
+        <input type="email" placeholder="Correo" value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })} required className="mb-3" />
+        <input type="password" placeholder="Contraseña" value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })} required className="mb-3" />
+        <button type="submit" className="w-50">Iniciar sesión</button>
+      </form>
+      <Link to={"/register"}>Ir a registro</Link>
     </div>
   );
 };
