@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080", // Cambia según tu servidor
+  baseURL: import.meta.env.VITE_BACK_URL, // Cambia según tu servidor
 });
 
 // Interceptor para añadir el token a las solicitudes protegidas
